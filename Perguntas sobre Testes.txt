@@ -1,0 +1,217 @@
+1. Por que as práticas de design de teste não podem ser aplicadas imediatamente após o recebimento dos requisitos?
+Os requisitos podem sofrer alterações, é necessário um entendimento profundo dos requisitos.
+
+2. Em que situações as classes de equivalência e os valores-limite podem existir separadamente? Explique sua resposta e dê exemplos.
+"Casos em que os requisitos são simples por exemplo em testes de telefone onde se tem apenas formatos inválidos ou válidos ( classe de equivalencia). Por exemplo : Classes de Equivalência: E-mails válidos e inválidos (formato correto e formato incorreto).
+Valores-Limite: Testar casos extremos, como um e-mail com o menor e o maior número possível de caracteres permitidos."
+
+3. O que é equivalência? O que é uma classe de equivalência?
+Equivalência é sinonimo de igualdade ou conjuntos similiares, classe de equivalencia são casos em que o sistema deveria responder igualmente para certos tipos de respostas.
+
+4. É possível excluir verificações no meio do intervalo em favor de verificações nos limites dentro do intervalo? Explique sua resposta.
+Sim, quando aplicado testes em volta dos limites, por exemplo no limite, um a mais que o limite, um a menos que o limite, com isto o sistema deve dar respostas similiares e serão excluidas verificações no meio do intervalo... A recomendação vai depender do contexto dos testes a serem feitos, caso os critérios assim exijam, ou um caso em que o histórico de erros apontam para os limites...
+
+5. Imagine que você precise testar um formulário onde cada campo possui um validador. O resultado do trabalho do formulário depende da combinação de dados nos campos. Quais práticas de design de teste devem ser usadas e por quê? Explique sua resposta.
+Testes de valores-limites.  Testes de classes de equivalência. Testes de combinação de dados válidos. Testes de formulário vázio. Teste de combinação de dados inválidos. Um exemplo de testes de valores-limites e classe de equivalência seria um usuário onde se testaria a validez do nome de usuário e o limite de caracteres. Sim, com certeza a tabela de decisão ajudaria, pois com ela seria mais facil de enxergar a situação de um panorama geral.
+
+6. Explique como você pode otimizar o número de testes ao trabalhar com tabelas de decisão. Explique sua resposta.
+Eliminar condições redundantes. Combinar condições equivalentes. Se duas ou mais combinações de entradas resultam nas mesmas saídas ou decisões, testar apenas uma dessas combinações é suficiente, economizando tempo e recursos. 
+
+7. Descreva como um checklist difere dos casos de teste. Dê exemplos de onde ambos são usados.
+Checklist é uma lista de tarefas a serem executadas. Casos de teste são procedimentos específicos em que são inseridos valores em condições específicas para que seja testado o sistema. Checklists são frequentemente usados para revisões de código, inspeções de documentos, avaliações de design... Casos de teste são amplamente utilizados durante o ciclo de vida do desenvolvimento de software, especialmente em fases de teste.
+
+8. Qual é a maneira correta de fazer um relatório de bug? Quais elementos de um relatório de bug são necessários? Por quê?
+"O relátorio de BUG deve conter: Título descritivo, Descrição detalhada, Ambiente de Teste, Prioridade do BUG, Passo a passo, Resultado esperado e resultado obtido. 
+Cada elemento mencionado em um relatório de bugs desempenha um papel específico e é importante para garantir que a comunicação entre as equipes de desenvolvimento e teste seja eficiente e que os problemas sejam compreendidos e corrigidos de maneira adequada. "
+
+9. Quais são as regras para escrever um título de relatório de bug? O que acontece se você criar um título ruim?
+O título deve ser descritivo, caso escreva um título ruim quem está lendo pode se confundir e não entender do que o BUG se trata.
+
+10. Em que consiste a arquitetura de um aplicativo cliente-servidor? Descreva, resumidamente, a funcionalidade de cada elemento.
+"
+A arquitetura cliente-servidor é um modelo de design de software em que a funcionalidade de um aplicativo é distribuída entre dois tipos de entidades: o cliente e o servidor. Essas entidades se comunicam entre si para fornecer serviços aos usuários. Aqui está uma descrição resumida da funcionalidade de cada elemento na arquitetura cliente-servidor:
+
+Cliente:
+
+O cliente é a parte do aplicativo que interage diretamente com o usuário.
+Funcionalidades:
+Apresenta a interface do usuário.
+Coleta entrada do usuário e a encaminha para o servidor.
+Processa a saída recebida do servidor para exibição ao usuário.
+Pode conter lógica de aplicação específica do cliente.
+Servidor:
+
+O servidor é responsável por fornecer serviços e recursos solicitados pelos clientes.
+Funcionalidades:
+Gerencia recursos e dados compartilhados.
+Processa solicitações dos clientes.
+Realiza lógica de negócios e processamento.
+Fornece dados e resultados aos clientes.
+Pode gerenciar a segurança e autenticação.
+Comunicação:
+
+Os clientes e servidores se comunicam através de protocolos de rede.
+Funcionalidades:
+Estabelece a conexão entre clientes e servidor.
+Gerencia a transferência de dados entre as partes.
+Pode ser baseada em diferentes protocolos, como HTTP, TCP/IP, ou outros, dependendo da aplicação.
+Lógica de Negócios:
+
+A lógica de negócios refere-se às regras e processos específicos da aplicação.
+Funcionalidades:
+No servidor, realiza processamento de dados e lógica específica da aplicação.
+Pode incluir cálculos, validações, e outras operações necessárias.
+Armazenamento de Dados:
+
+Pode haver um componente de armazenamento de dados que gerencia o acesso e a manipulação de dados.
+Funcionalidades:
+Armazena e recupera dados conforme necessário.
+Pode ser um banco de dados, sistemas de arquivos, ou outros mecanismos de armazenamento.
+Funcionamento Resumido:
+
+O cliente envia solicitações para o servidor.
+O servidor processa as solicitações, executa a lógica de negócios e acessa os dados se necessário.
+O servidor retorna os resultados processados para o cliente.
+O cliente exibe os resultados ao usuário e pode enviar novas solicitações conforme necessário.
+A arquitetura cliente-servidor é comumente usada em sistemas distribuídos, onde a separação de responsabilidades entre cliente e servidor permite escalabilidade, manutenção e gerenciamento mais eficientes de recursos em uma aplicação.
+
+
+
+
+
+"
+
+11. Descreva as etapas de processamento da solicitação após esta URL ser inserida na barra de endereços do navegador: https://google.com.
+DNS ( IP ), CONEXÃO TCP, SOLICITAÇÃO HTTP, RESPOSTA HTTP, TRANSMISSÃO DE DADOS, RANDERIZAÇÃO NO NAVEGADOR
+
+12.O que é um cache? Por que ele é necessário? Qual regra deve ser seguida ao trabalhar com um cache no teste?
+Cache é um armazenamento temporário, é necessário para melhorar o desempenho e testar a eficiência, antes de se trabalhar com um cache deve ser limpado o cache, simular condições para o cache e monitorar o desempenho.
+
+"13. Responda às perguntas sobre os protocolos HTTP e HTTPS:
+- Qual é a diferença entre HTTP e HTTPS? Quando você não deve usar HTTP?
+- Quais componentes compõem uma solicitação HTTP: para que cada um serve?
+- Quais métodos HTTP você conhece? Para que eles servem? Dê exemplos de aplicação de diferentes métodos.
+- O que é um código de resposta HTTP? Quais códigos existem?"
+.HTTP é um protocolo de transferencia sem criptografia, o HTTPS é criptografado. Não se deve usar o HTTP em situações de segurança crítica. Os componentes de uma solicitação HTTP são: Método, URL, Cabeçalho e corpo da solicitação. Os métodos HTTP que eu conheço são get, post, put, delete. Eles servem para solicitar dados, enviar dados para serem processados, alterar dados, e deletar dados. Os códigos representam como o servidor se portou por ex: 200 OK ou 400 BAD REQUEST.
+
+14. Descreva os componentes que podem compor uma URL. Pelo que cada um é responsável?
+"Uma URL (Uniform Resource Locator) é um endereço que é usado para identificar recursos na web. Ela é composta por diferentes componentes, cada um desempenhando um papel específico na especificação do local e do tipo de recurso a ser acessado. Aqui estão os principais componentes de uma URL e suas responsabilidades:
+
+Esquema (Scheme):
+
+Exemplo: http://, https://, ftp://
+Responsabilidade: Indica o protocolo utilizado para acessar o recurso. Exemplos comuns incluem HTTP, HTTPS, FTP, entre outros.
+Usuário e Senha (Username e Password):
+
+Exemplo: user:password@
+Responsabilidade: Fornece informações de autenticação, se necessário. Nem todas as URLs contêm essa parte, e é menos comum atualmente devido a práticas de segurança.
+Host:
+
+Exemplo: www.example.com
+Responsabilidade: Especifica o domínio ou endereço IP do servidor onde o recurso está localizado. É fundamental para determinar o destino da requisição.
+Porta (Port):
+
+Exemplo: :8080
+Responsabilidade: Indica o número da porta do servidor onde o recurso está disponível. Se não for especificada, a porta padrão é geralmente utilizada (por exemplo, 80 para HTTP, 443 para HTTPS).
+Caminho (Path):
+
+Exemplo: /path/to/resource
+Responsabilidade: Especifica o caminho ou a hierarquia de diretórios no servidor onde o recurso está localizado. Cada segmento no caminho indica um diretório ou subdiretório.
+Consulta (Query):
+
+Exemplo: ?key1=value1&key2=value2
+Responsabilidade: Utilizado para incluir parâmetros de consulta no pedido. Os parâmetros são geralmente na forma de pares chave-valor e são usados pelo servidor para processar a solicitação.
+Fragmento (Fragment):
+
+Exemplo: #section1
+Responsabilidade: Especifica uma parte específica do recurso, geralmente utilizada em documentos HTML. O navegador pode rolar até essa parte específica do conteúdo."
+
+
+"15. Verifique se há erros no JSON
+Se houver, anexe a versão correta do arquivo."
+
+Link para a ilustração:
+https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/qa-final-project/US/7.1.1.png
+"{
+  ""Menu"": {
+    ""id"": ""1"",
+    ""value"": ""File"",
+    ""list"": {
+      ""items"": {
+        ""new_doc"": {
+          ""value"": ""New"",
+          ""onclick"": ""create_new_doc""
+        },
+        ""open_doc"": {
+          ""value"": ""Open..."",
+          ""onclick"": ""open_doc""
+        },
+        ""save_doc"": {
+          ""value"": ""Save"",
+          ""onclick"": ""save_doc""
+        },
+        ""save_as_doc"": {
+          ""value"": ""Save as..."",
+          ""onclick"": ""save_as_doc""
+        },
+        ""print_option"": {
+          ""value"": ""Print Options"",
+          ""onclick"": {
+            ""show_print_option"": {
+              ""Color"": ""Saturated"",
+              ""Black and white printing"": """",
+              ""Print Size"": ""A4""
+            }
+          }
+        }
+      }
+    }
+  }
+}
+"
+
+
+16. O que é um banco de dados relacional? Como ele difere de um não relacional?
+"s bancos de dados não relacionais, também conhecidos como NoSQL (Not Only SQL), diferem em termos de estrutura em comparação com os bancos de dados relacionais tradicionais. Em vez de seguir o modelo tabular e relacional dos bancos de dados SQL, os bancos de dados NoSQL adotam modelos diferentes, dependendo do tipo específico de banco de dados. Aqui estão alguns modelos comuns usados em bancos de dados NoSQL:
+
+Modelo de Documento:
+
+Exemplo: MongoDB, CouchDB.
+Estrutura:
+Os dados são armazenados em documentos no formato JSON ou BSON (binário JSON).
+Cada documento é autocontido e pode conter diferentes campos e tipos de dados.
+Documentos são agrupados em coleções.
+Modelo de Coluna:
+
+Exemplo: Apache Cassandra, HBase.
+Estrutura:
+Dados são organizados em colunas, não em linhas.
+Cada chave é mapeada para um conjunto de colunas associadas a ela.
+Eficiente para consultas analíticas e agregações.
+Modelo de Grafos:
+
+Exemplo: Neo4j, ArangoDB.
+Estrutura:
+Os dados são representados como nós, arestas e propriedades.
+Ótimo para modelar relações complexas entre entidades.
+Pode ser utilizado para problemas que envolvem grafos e redes.
+Modelo de Chave-Valor:
+
+Exemplo: Redis, DynamoDB.
+Estrutura:
+Cada item de dados é armazenado como um par de chave e valor.
+Não há uma estrutura fixa para os valores; podem ser strings, binários, JSON, etc.
+Eficiente para operações de leitura/escrita rápidas.
+Modelo Multi-Modelo:
+
+Exemplo: OrientDB, Cosmos DB.
+Estrutura:
+Permite suporte a vários modelos de dados em um único banco de dados.
+Pode oferecer flexibilidade para escolher o modelo de dados mais adequado para diferentes partes da aplicação.
+Essas estruturas são apenas exemplos gerais, e muitos bancos de dados NoSQL oferecem variações e combinações desses modelos. A escolha do modelo depende dos requisitos específicos da aplicação e das características dos dados que estão sendo armazenados e consultados. A flexibilidade desses modelos torna os bancos de dados NoSQL adequados para uma variedade de cenários, especialmente aqueles em que os requisitos de escalabilidade e flexibilidade são essenciais.
+
+
+
+
+
+"
