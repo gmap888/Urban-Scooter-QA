@@ -1,0 +1,3087 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\,";
+    mso-displayed-thousand-separator:"\.";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="71">
+            <img src="https://gabrielpereira.atlassian.net/images/icon-jira-software-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="71">
+            <a href="https://gabrielpereira.atlassian.net/issues/?jql=project+%3D+%22SF%22+ORDER+BY+created+DESC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="71">
+            Exibindo 23 pendências como em 30/jan/24 2:09 PM.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                                                        Projeto
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Chave
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Resumo
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Tipo de Problema
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        Estado
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Prioridade
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Resolução
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Responsável
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Criador
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                                                        Criador
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Criado
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                                                        Última visualização
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Atualizado
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                                                        Resolvido
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                                                        Afeta as versões
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                                                        Versões de correção
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                                                        Componentes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Data limite
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                                                        Votos
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                                                        Acompanhadores
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                                                        Imagens
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                                                        Tempo Estimado
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                                                        Tempo Restante
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                                                        Tempo Gasto
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                                                        Razão Trabalhada
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                                                        Subtarefas
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                                                        Problemas ligados
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                                                        Ambiente
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                                                        Descrição
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                                                        Nível de Segurança
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                                                        Evolução
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                                                        Σ Progresso
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                                                        Σ Tempo Gasto
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                                                        Σ da Estimativa Restante
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                                                        Σ da Estimativa Original
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                                                        Etiquetas
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                                                        Categoria de estado alterada
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                                                        Categoria de estado
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                                                        Principal
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                                                        Actual end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10008" data-id="customfield_10008">
+                                                        Actual start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10003" data-id="customfield_10003">
+                                                        Approvers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10032" data-id="customfield_10032">
+                                                        Atlas project key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10033" data-id="customfield_10033">
+                                                        Atlas project status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10007" data-id="customfield_10007">
+                                                        Change reason
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10006" data-id="customfield_10006">
+                                                        Change risk
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                                                        Change type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10013" data-id="customfield_10013">
+                                                        Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10014" data-id="customfield_10014">
+                                                        Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10011" data-id="customfield_10011">
+                                                        Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10012" data-id="customfield_10012">
+                                                        Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                                                        Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                                                        Impact
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10017" data-id="customfield_10017">
+                                                        Issue color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10027" data-id="customfield_10027">
+                                                        Locked forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10028" data-id="customfield_10028">
+                                                        Open forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10002" data-id="customfield_10002">
+                                                        Organizations
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10018" data-id="customfield_10018">
+                                                        Parent Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                                                        Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10010" data-id="customfield_10010">
+                                                        Request Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                                                        Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10015" data-id="customfield_10015">
+                                                        Start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10031" data-id="customfield_10031">
+                                                        Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                                                        Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10029" data-id="customfield_10029">
+                                                        Submitted forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10023" data-id="customfield_10023">
+                                                        Target end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10022" data-id="customfield_10022">
+                                                        Target start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                                                        Team
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10030" data-id="customfield_10030">
+                                                        Total forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10024" data-id="customfield_10024">
+                                                        [CHART] Date of First Response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                                                        development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10079" rel="10079" data-issuekey="SF-24" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-24" href="https://gabrielpereira.atlassian.net/browse/SF-24">SF-24</a>
+</td>
+                                            <td class="summary"><p>
+                O BOTÃO IR NO STATUS DO PEDIDO NÃO ESTÁ DE ACORDO COM OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 08/jan/24 5:39 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 08/jan/24 5:39 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10173/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      O botão “IR” no status do pedido não está de acordo com os requisitos.<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo:<br/>
+<br/>
+# Abra o aplicativo do Urban Scooter<br/>
+# Crie um pedido<br/>
+# Abre a página de status do pedido<br/>
+# Clique em Status do Pedido<br/>
+<br/>
+<br/>
+<br/>
+Resultado Real: Apareceu o botão “IR”<br/>
+<br/>
+Resultado Esperado: Botão “Ir” não deveria aparecer 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 08/jan/24 5:39 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000hb:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10078" rel="10078" data-issuekey="SF-23" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-23" href="https://gabrielpereira.atlassian.net/browse/SF-23">SF-23</a>
+</td>
+                                            <td class="summary"><p>
+                AO CANCELAR UM PEDIDO INEXISTENTE COM O PUT , O ERRO NÃO ESTÁ DE ACORDO COM OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 04/jan/24 11:05 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 5:27 PM </td>
+                                            <td class="updated"> 04/jan/24 11:05 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10171/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Ao cancelar um pedido inexistente com a solicitação PUT api/v1/orders/cancel , o erro apresentado não está de acordo com os requisitos<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+ <br/>
+<br/>
+# Execute o servidor<br/>
+# Abra o Postman<br/>
+# Crie uma solicitação PUT api/v1/orders/cancel<br/>
+# copie o número do pedido no body {     &quot;track&quot;:123123 }<br/>
+# Execute a solicitação<br/>
+<br/>
+Resultado Real: 400 Bad Request<br/>
+<br/>
+Resultado Esperado: 404 NOT FOUND
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 04/jan/24 11:05 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000h3:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10077" rel="10077" data-issuekey="SF-22" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-22" href="https://gabrielpereira.atlassian.net/browse/SF-22">SF-22</a>
+</td>
+                                            <td class="summary"><p>
+                NÃO FOI POSSÍVEL CANCELAR UM PEDIDO EXISTENTE COM A SOLICITAÇÃO PUT
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 04/jan/24 11:02 AM </td>
+                                            <td class="lastViewed"> 04/jan/24 11:04 AM </td>
+                                            <td class="updated"> 04/jan/24 11:02 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10169/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Postman 
+  </td>
+                                            <td class="description">      Não foi possível cancelar um pedido existente com a solicitação PUT api/v1/orders/cancel<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+<br/>
+<br/>
+# Execute o servidor<br/>
+# Abra o Postman<br/>
+# Crie um pedido<br/>
+# Crie uma solicitação PUT api/v1/orders/cancel<br/>
+# copie o número do pedido no body {     &quot;track&quot;: …. }<br/>
+# Execute a solicitação<br/>
+<br/>
+Resultado Real: 400 Bad Request<br/>
+<br/>
+Resultado Esperado: 200 OK
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 04/jan/24 11:02 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000gv:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10076" rel="10076" data-issuekey="SF-21" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-21" href="https://gabrielpereira.atlassian.net/browse/SF-21">SF-21</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL CRIAR UM GET V1/ORDERS/TRACK PARA UM NÚMERO VÁZIO
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 04/jan/24 10:57 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:07 PM </td>
+                                            <td class="updated"> 04/jan/24 10:57 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10167/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Postman
+  </td>
+                                            <td class="description">      Foi possível obter um GET v1/orders/track?t= para um número vázio<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+# Execute o Servidor<br/>
+# Abra o Postman<br/>
+# Crie uma solicitação GET v1/orders/track?t=<br/>
+# Execute a solicitação<br/>
+<br/>
+Resultado Real: 200 OK<br/>
+<br/>
+Resultado Esperado: 400 BAD REQUEST
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 04/jan/24 10:57 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000gn:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10075" rel="10075" data-issuekey="SF-20" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-20" href="https://gabrielpereira.atlassian.net/browse/SF-20">SF-20</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL CRIAR UM GET PARA UM PEDIDO INEXISTENTE
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 04/jan/24 10:54 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:07 PM </td>
+                                            <td class="updated"> 04/jan/24 10:54 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10166/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Postman
+  </td>
+                                            <td class="description">      Foi possível obter um GET v1/orders/track?t=123123 para um pedido inexistente.<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+# Execute o Servidor<br/>
+# Abra o Postman<br/>
+# Crie uma solicitação GET v1/orders/track?t=123123<br/>
+# Execute a solicitação<br/>
+<br/>
+Resultado Real: 200 OK<br/>
+<br/>
+Resultado Esperado: 404 Not Found
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 04/jan/24 10:54 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000gf:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10074" rel="10074" data-issuekey="SF-19" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-19" href="https://gabrielpereira.atlassian.net/browse/SF-19">SF-19</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSIVEL REMOVER UM ENTREGADOR SEM NADA NO BODY DA API
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 04/jan/24 10:51 AM </td>
+                                            <td class="lastViewed"> 30/jan/24 2:09 PM </td>
+                                            <td class="updated"> 04/jan/24 10:51 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10164/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Postman
+  </td>
+                                            <td class="description">      Foi possível remover um entregador sem nada no body da API <br/>
+<br/>
+DELETE API/V1/COURIER/:ID<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo <br/>
+<br/>
+<br/>
+<br/>
+# Execute o servidor<br/>
+# Abra o postman<br/>
+# Execute uma API delete DELETE API/V1/COURIER/:ID<br/>
+# Deixe o body vazio<br/>
+<br/>
+<br/>
+<br/>
+Resultado Real: Foi possível remover entregador sem nada no body da API<br/>
+<br/>
+Resultado Esperado: 404 Error Bad Request
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 04/jan/24 10:51 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000g7:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10073" rel="10073" data-issuekey="SF-18" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-18" href="https://gabrielpereira.atlassian.net/browse/SF-18">SF-18</a>
+</td>
+                                            <td class="summary"><p>
+                AO CONSULTAR UM PEDIDO EM ATRASO O STATUS NÃO APARECE O NÚMERO DE SUPORTE
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 02/jan/24 1:51 PM </td>
+                                            <td class="lastViewed"> 04/jan/24 10:46 AM </td>
+                                            <td class="updated"> 02/jan/24 1:51 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10161/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      |Chrome 1280x720|Opera 1280 x 720|
+  </td>
+                                            <td class="description">      Ao exibir um pedido em atraso, o número de suporte deveria aparecer no status e não aparece<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+# Abra o aplicativo do Urban Scooter<br/>
+# Crie um pedido com alguns dias de atraso<br/>
+# Abra a página de Status do Pedido<br/>
+# O status deveria aparecer o número de suporte<br/>
+<br/>
+<br/>
+<br/>
+Resultado Real: O entregador está atrasado?<br/>
+<br/>
+Não conseguiremos entregar a scooter a tempo. Para esclarecer o status do seu pedido, ligue para o suporte:<br/>
+<br/>
+<br/>
+<br/>
+Resultado esperado: O entregador está atrasado?<br/>
+<br/>
+Não conseguiremos entregar a scooter a tempo. Para esclarecer o status do seu pedido, ligue para o suporte:0101
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 02/jan/24 1:51 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000fz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10072" rel="10072" data-issuekey="SF-17" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-17" href="https://gabrielpereira.atlassian.net/browse/SF-17">SF-17</a>
+</td>
+                                            <td class="summary"><p>
+                A FIGURA DA PÁGINA &quot;ESTE PEDIDO NÃO EXISTE&quot; NÃO ESTÁ DE ACORDO COM OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 02/jan/24 12:16 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 02/jan/24 12:16 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10159/REQUISITOS.png">
+            REQUISITOS.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      |Chrome 1280x720|Opera 1280 x 720|
+  </td>
+                                            <td class="description">      A figura da página “Este pedido não existe” não está de acordo com os requisitos.<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução do bug:<br/>
+<br/>
+# Abra o aplicativo do Urban Scooter;<br/>
+# Clique em Status do Pedido no cabeçalho<br/>
+# Coloque um número inválido<br/>
+# A figura da página “Este pedido não existe” não está de acordo com os requisitos.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 02/jan/24 12:16 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000fr:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10071" rel="10071" data-issuekey="SF-16" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-16" href="https://gabrielpereira.atlassian.net/browse/SF-16">SF-16</a>
+</td>
+                                            <td class="summary"><p>
+                AO CLICAR NO BOTÃO STATUS DO PEDIDO NO CABEÇALHO E CLICAR NO BOTÃO &#39;IR&#39; SISTEMA NÃO FUNCIONA
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 02/jan/24 12:06 PM </td>
+                                            <td class="lastViewed"> 02/jan/24 12:13 PM </td>
+                                            <td class="updated"> 02/jan/24 12:06 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      *Opera 1280 x 720*,*Chrome 1280x720*
+  </td>
+                                            <td class="description">      Ao clicar no botão status do pedido no cabeçalho e clicar no botão’ir&#39; sistema não funciona.<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução:<br/>
+<br/>
+<br/>
+<br/>
+# Abra o aplicativo do Urban Scooter<br/>
+# Crie um pedido <br/>
+# Coloque o número de status do pedido<br/>
+# Vá para a página do status do pedido<br/>
+# Clique no botão ‘Status do pedido’<br/>
+# Coloque o número do pedido <br/>
+# Clique no botão IR<br/>
+<br/>
+<br/>
+<br/>
+Resultado Real: Nada aconteceu<br/>
+<br/>
+Resultado Esperado: Abrir página de status do pedido
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 02/jan/24 12:06 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000fj:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10070" rel="10070" data-issuekey="SF-15" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-15" href="https://gabrielpereira.atlassian.net/browse/SF-15">SF-15</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL ADICIONAR LETRAS NÃO LATINAS NO CAMPO &#39;COMENTÁRIO&#39;
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 27/dez/23 6:29 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:02 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10156/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      De acordo com os requisitos o campo &#39; comentários&#39; só poderia ser escrito com letras latinas mas foi possível adicionar outras letras.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um letras não latinas no campo ‘comentários’<br/>
+<br/>
+Resultado Real: OK<br/>
+<br/>
+Resultado Esperado: Mensagem de Errro
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 27/dez/23 6:29 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000fb:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10069" rel="10069" data-issuekey="SF-14" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-14" href="https://gabrielpereira.atlassian.net/browse/SF-14">SF-14</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL ADICIONAR MAIS DE 24 CARACTERES NO CAMPO &#39;COMENTÁRIO&#39;
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 27/dez/23 6:27 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:02 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10153/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      O Requisito diz que o campo ‘comentário’ o máximo são 24 caracteres mas foi possível escrever 25 caracteres.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite 25 caracteres no campo ‘comentário’<br/>
+<br/>
+Resultado Real: OK<br/>
+<br/>
+Resultado Esperado: Mensagem de Erro
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 27/dez/23 6:27 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000f3:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10068" rel="10068" data-issuekey="SF-13" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-13" href="https://gabrielpereira.atlassian.net/browse/SF-13">SF-13</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSIVEL ADICIONAR DADOS MANUAIS NO CAMPO QUANDO ENTREGAR A SCOOTER
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 26/dez/23 10:23 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:03 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10151/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      CHROME
+  </td>
+                                            <td class="description">      Foi possível adicionar dados manuais na data de entrega da scooter, o que de acordo com os requisitos não é possível.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Insira dados manuais na data da entrega<br/>
+<br/>
+<br/>
+<br/>
+Resultado real: Foi possível adicionar dados manuais na data<br/>
+<br/>
+Resultado Esperado: Não é possivel adicionar dados manuais no campo
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 26/dez/23 10:23 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000ev:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10067" rel="10067" data-issuekey="SF-12" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-12" href="https://gabrielpereira.atlassian.net/browse/SF-12">SF-12</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL ESCOLHER DATA ANTERIOR A ATUAL
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 26/dez/23 10:19 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:03 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10149/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      De acordo com os requisitos só é póssivel escolher uma data posterior a data atual mas foi possivel escolher uma data anterior.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Escolha uma data posterio a data atual.<br/>
+<br/>
+Resultado Real: Data anterior a atual<br/>
+<br/>
+Resultado Esperado: Só é possível uma data posterior
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 26/dez/23 10:19 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000en:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10066" rel="10066" data-issuekey="SF-11" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-11" href="https://gabrielpereira.atlassian.net/browse/SF-11">SF-11</a>
+</td>
+                                            <td class="summary"><p>
+                MENSAGEM DE ERRO AO DIGITAR UM TELEFONE INCORRETO ESTÁ DIFERENTE DO REQUISITO
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 26/dez/23 10:11 AM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:03 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10147/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      Ao inserir um número de telefone incorreto, a mensagem de erro aparece “Insira um número válido” , mas de acordo com os requisitos deveria ser &quot;Digite um número de telefone válido&quot;.<br/>
+<br/>
+<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um telefone não válido<br/>
+<br/>
+<br/>
+<br/>
+Resultado Real: Mensagem de erro “Insira um número válido”<br/>
+<br/>
+Resultado Esperado: Mensagem de erro “Digite um número de telefone válido”
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 26/dez/23 10:11 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000ef:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10065" rel="10065" data-issuekey="SF-10" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-10" href="https://gabrielpereira.atlassian.net/browse/SF-10">SF-10</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL ADICIONAR UM ENDEREÇO NÃO VÁLIDO NO CAMPO &#39;ESTAÇÃO DE METRÔ&#39;
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 4:21 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:04 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      Foi possível adicionar um endereço não válido no campo ‘Estação de Metrô’<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Insira um endereço com uma bolinha em vermelho<br/>
+<br/>
+Resultado Esperado: Mensagem de Erro<br/>
+<br/>
+Resultado Real: OK
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 4:21 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000e7:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10064" rel="10064" data-issuekey="SF-9" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-9" href="https://gabrielpereira.atlassian.net/browse/SF-9">SF-9</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL DEIXAR O CAMPO &#39;ESTAÇÃO DE METRÔ&#39; VÁZIO
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 4:18 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:04 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10145/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      O campo ‘Estação de Metro’ de acordo com os requisitos é obrigatório, porem foi possível deixar vazio.<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Deixe o campo vazio<br/>
+<br/>
+Resultado Real: OK<br/>
+<br/>
+Resultado Esperado: Mensagem de Erro
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 4:18 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10063" rel="10063" data-issuekey="SF-8" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-8" href="https://gabrielpereira.atlassian.net/browse/SF-8">SF-8</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL DEIXAR O CAMPO &#39;ENDEREÇO&#39; VÁZIO
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 4:12 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:02 PM </td>
+                                            <td class="updated"> 08/jan/24 6:04 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10144/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      O campo ‘Endereço’ de acordo com os requisitos é obrigatório, porem foi possivel deixar vázio.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Deixe o campo’Endereço&#39; Vázio<br/>
+<br/>
+Resultado Real: OK<br/>
+<br/>
+# Resultado Esperado: Mensagem de Erro
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 4:12 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dr:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10062" rel="10062" data-issuekey="SF-7" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-7" href="https://gabrielpereira.atlassian.net/browse/SF-7">SF-7</a>
+</td>
+                                            <td class="summary"><p>
+                MENSAGEM DE ERRO AO DIGITAR UM ENDEREÇO INCORRETO NÃO ESTÁ CONFORME OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 4:09 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:01 PM </td>
+                                            <td class="updated"> 08/jan/24 6:02 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10141/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      De acordo com os requisitos ao digitar um endereço não válido, a mensagem de erro deveria ser &quot;Insira um endereço válido&quot;. Mas o erro aparece com a seguinte mensagem “Insira um número válido”.<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um Endereço não válido<br/>
+<br/>
+Resultado esperado:&quot;Insira um endereço válido<br/>
+<br/>
+Resultado Real: ““Insira um número válido”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 4:09 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dj:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10060" rel="10060" data-issuekey="SF-5" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-5" href="https://gabrielpereira.atlassian.net/browse/SF-5">SF-5</a>
+</td>
+                                            <td class="summary"><p>
+                NÃO FOI POSSÍVEL ADICIONAR / NO CAMPO ENDEREÇO
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 4:05 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:01 PM </td>
+                                            <td class="updated"> 08/jan/24 6:01 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10140/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      Não foi possível adicionar uma / no campo endereço, o que deveria ser possivel de acordo com os requisitos.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite uma / no campo ‘Endereço’<br/>
+<br/>
+Resultado Real: Mensagem de Erro<br/>
+<br/>
+{panel:bgColor=#deebff}<br/>
+Resultado Esperado: OK<br/>
+{panel}
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 4:05 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000db:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10059" rel="10059" data-issuekey="SF-4" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-4" href="https://gabrielpereira.atlassian.net/browse/SF-4">SF-4</a>
+</td>
+                                            <td class="summary"><p>
+                NÃO FOI POSSÍVEL ADICIONAR 50 CARACTÉRES NO CAMPO &#39;ENDEREÇO&#39;
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 3:58 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:00 PM </td>
+                                            <td class="updated"> 08/jan/24 6:00 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10137/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      Não foi possível adicionar 50 caracteres no campo ‘Endereço’. De acordo com os requisitos o limite seria 50.<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite no campo ‘Endereço’<br/>
+<br/>
+Resultado Esperado: OK<br/>
+<br/>
+Resultado Real: Mensagem de erro
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 3:58 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000d3:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10058" rel="10058" data-issuekey="SF-3" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-3" href="https://gabrielpereira.atlassian.net/browse/SF-3">SF-3</a>
+</td>
+                                            <td class="summary"><p>
+                MENSAGEM DE ERRO AO DIGITAR UM SOBRENOME INCORRETO NÃO ESTÁ CONFORME OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 3:44 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 6:00 PM </td>
+                                            <td class="updated"> 08/jan/24 6:00 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10136/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      De acordo com os requisitos ao digitar um nome não válido, a mensagem de erro deveria ser &quot;Insira um sobrenome correto&quot;. Mas o erro aparece com a seguinte mensagem “Insira um nome válido”.<br/>
+<br/>
+ <br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um sobrenome não válido<br/>
+<br/>
+Resultado esperado:&quot;Insira um sobrenome válido&quot;<br/>
+<br/>
+Resultado Real: ““Insira um nome válido”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 3:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cv:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10057" rel="10057" data-issuekey="SF-2" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-2" href="https://gabrielpereira.atlassian.net/browse/SF-2">SF-2</a>
+</td>
+                                            <td class="summary"><p>
+                FOI POSSÍVEL ADICIONAR 16 CARACTÉRES NO CAMPO &#39;SOBRENOME&#39;
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 3:40 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 5:59 PM </td>
+                                            <td class="updated"> 08/jan/24 6:00 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10134/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      Foi possível adicionar 16 caracteres no campo ‘Sobrenome’. De acordo com os requisitos o limite seria 15.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um Sobrenome com 16 Caracteres<br/>
+<br/>
+Resultado Esperado: Mensagem de Erro<br/>
+<br/>
+Resultado Real: Foi possível adicionar 16 caracteres<br/>
+<br/>
+|| || || ||<br/>
+| | | |<br/>
+| | | |<br/>
+<br/>
+|| || || ||<br/>
+| | | |<br/>
+| | | |
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 3:40 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cn:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10056" rel="10056" data-issuekey="SF-1" class="issuerow">
+                                            <td class="project">    Sprint Final
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="SF-1" href="https://gabrielpereira.atlassian.net/browse/SF-1">SF-1</a>
+</td>
+                                            <td class="summary"><p>
+                MENSAGEM DE ERRO AO DIGITAR UM NOME INCORRETO NÃO ESTÁ CONFORME OS REQUISITOS
+    </p>
+</td>
+                                            <td class="issuetype">    Problema
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;A fazer&lt;/span&gt;">A fazer</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Não Resolvido</em>
+</td>
+                                            <td class="assignee">    <em>Sem responsável</em>
+</td>
+                                            <td class="reporter">            gabriel pereira
+    </td>
+                                            <td class="creator">            gabriel pereira
+    </td>
+                                            <td class="created"> 20/dez/23 3:33 PM </td>
+                                            <td class="lastViewed"> 08/jan/24 5:58 PM </td>
+                                            <td class="updated"> 08/jan/24 5:59 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://gabrielpereira.atlassian.net/secure/attachment/10132/resultado+esperado.png">
+            resultado esperado.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment">      Chrome
+  </td>
+                                            <td class="description">      De acordo com os requisitos ao digitar um nome não válido, a mensagem de erro deveria ser &quot;Digite o nome correto&quot;. Mas o erro aparece com a seguinte mensagem “Insira um nome válido”.<br/>
+<br/>
+Passo a passo para execução do BUG:<br/>
+<br/>
+# Abra o sistema do Urban Scooter<br/>
+# Clique em Fazer Pedido<br/>
+# Digite um nome não válido<br/>
+<br/>
+Resultado esperado:&quot;Digite o nome correto&quot;<br/>
+<br/>
+Resultado Real: ““Insira um nome válido”.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/dez/23 3:33 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">Pendências</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cf:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    Nenhum
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="71"><font size="1">
+        Gerado às Tue Jan 30 17:09:19 UTC 2024 por gabriel pereira usando o JIRA 1001.0.0-SNAPSHOT#100245-sha1:1f690e021e6ed509e6ddbc4780e6a72602660039.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
